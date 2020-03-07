@@ -72,7 +72,7 @@
 
         // keep track of user's answers
         let numCorrect = 0;
-        myQuestions.forEach( (currentQuestion, questionNumber) => {
+        Questions.forEach( (currentQuestion, questionNumber) => {
 
             // find selected answer
             const answerContainer = answerContainers[questionNumber];
@@ -93,7 +93,7 @@
               answerContainers[questionNumber].style.color = 'red';
             }
           });
-        resultContainer.innerHTML= `${numCorrect} out of ${myQuestions.length}`;
+        resultContainer.innerHTML= `${numCorrect} out of ${Questions.length}`;
     }
 
     //Initiate the quiz
