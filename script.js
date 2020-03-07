@@ -52,12 +52,12 @@
             {
                 answers.push(
                     //Add an html button
-                    <label>
-                        <input type="radio" name="question${questionNumber}" value="${letter}" >
+                    `<label>
+                        <input type="radio" name="question${questionNumber}" value="${letter}">
                             ${letter} :
                             ${currentQuestions.answers[letter]}
                         </input>
-                    </label>
+                    </label>`
                 ); 
             }
             output.push(
