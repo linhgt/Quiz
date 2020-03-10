@@ -62,49 +62,16 @@
                 ); 
             }
             output.push(
-                `<div class="question">${currentQuestion.question}</div>
-                <div class="answers">${answers.join('')}</div>`
+                `<div class="slide">
+                    <div class="question"> ${currentQuestion.question} </div>
+                    <div class="answers"> ${answers.join('')} </div>
+                </div>`
             );
         }
         );
         // finally combine our output list into one string of HTML and put it on the page
         quizContainer.innerHTML = output.join('');
     }
-    /*function buildQuiz(){
-        // variable to store the HTML output
-        const output = [];
-    
-        // for each question...
-        Questions.forEach(
-          (currentQuestion, questionNumber) => {
-    
-            // variable to store the list of possible answers
-            const answers = [];
-    
-            // and for each available answer...
-            for(letter in currentQuestion.answers){
-    
-              // ...add an HTML radio button
-              answers.push(
-                `<label>
-                  <input type="radio" name="question${questionNumber}" value="${letter}">
-                  ${letter} :
-                  ${currentQuestion.answers[letter]}
-                </label>`
-              );
-            }
-    
-            // add this question and its answers to the output
-            output.push(
-              `<div class="question"> ${currentQuestion.question} </div>
-              <div class="answers"> ${answers.join('')} </div>`
-            );
-          }
-        );
-    
-        // finally combine our output list into one string of HTML and put it on the page
-        quizContainer.innerHTML = output.join('');
-      }*/
     function showResult(){
         // gather answer containers from our quiz
         const answerContainers = quizContainer.querySelectorAll('.answers');
@@ -135,9 +102,52 @@
         resultContainer.innerHTML= `${numCorrect} out of ${Questions.length}`;
     }
 
+    function showSlide(n)
+    {
+        slides[currentSlide].classList.remove("active-slide");
+        slides[n].classList.add("active-slide");
+        currentSlide=n;
+        if(currentSlide === 0)
+        {
+            PrevButton.style.display="none";
+        }
+        else
+        {
+            PrevButton.style.display="inline-block";
+        }
+        if(currentSlide === slides.length-1)
+        {
+            NextButton.style.display = "none";
+            submitButton.style.display = "inline-block";
+        }
+        else
+        {
+            NextButton.style.display = "inline-block";
+            submitButton.style.display = "none";
+        }
+    }
+
+    function showNextSlide() {
+        showSlide(currentSlide + 1);
+    }
+      
+    function showPreviousSlide() {
+        showSlide(currentSlide - 1);
+    }
+
     //Initiate the quiz
     buildQuiz();
 
+    //Pagination
+    const PrevButton = document.getElementById("previous");
+    const NextButton = document.getElementById("next");
+    const slides = document.querySelectorAll(".slide");
+    let currentSlide = 0;
+
+    showSlide(currentSlide);
+
     //on submit, display result
     submitButton.addEventListener("click", showResult);
+    PrevButton.addEventListener("click", showPreviousSlide);
+    NextButton.addEventListener("click", showNextSlide);
 })();
