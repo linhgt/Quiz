@@ -1,8 +1,11 @@
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:300,600);
+
 body{
 	font-size: 20px;
 	font-family: sans-serif;
   color: #333;
   background-color:lightsalmon;
+  position:relative;
 }
 
 #intro-container{
@@ -44,21 +47,21 @@ body{
 }
 
 .question{
-	font-weight: 600;
+  font-weight: 600;
+  font-size: 30px;
+  margin-bottom: 10px;
 }
 .answers {
   margin-bottom: 20px;
+  text-align: left;
+  display: inline-block;
 }
 .answers label{
   display: block;
 }
 
-#next{
-  right:15px;
-}
-
-#submit{
-  right:50vw;
+#result{
+  bottom:0;
 }
 
 #submit, #previous, #next{
@@ -71,7 +74,6 @@ body{
 	padding: 20px;
 	cursor: pointer;
   margin-bottom: 20px;
-  position:absolute;
 }
 
 #submit:hover{

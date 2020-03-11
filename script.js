@@ -113,7 +113,7 @@
               answerContainers[questionNumber].style.color = 'red';
             }
           });
-        resultContainer.innerHTML= `${numCorrect} out of ${Questions.length}`;
+        resultContainer.innerHTML= `You got ${numCorrect} out of ${Questions.length}`;
     }
 
     function showSlide(n)
@@ -149,6 +149,7 @@
         showSlide(currentSlide - 1);
     }
 
+    //Hide the intro page
     function isQuizStarted(){
         if (quizStarted !== "false")
         {
