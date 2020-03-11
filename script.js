@@ -113,7 +113,18 @@
               answerContainers[questionNumber].style.color = 'red';
             }
           });
+        
         resultContainer.innerHTML= `You got ${numCorrect} out of ${Questions.length}`;
+        if(numCorrect === 3)
+        {
+            resultContainer.innerHTML += `
+                <h1>Congratulation! you are a nerd.</h1>.`
+        }
+        else
+        {
+            resultContainer.innerHTML += `
+                <h1>Congratulation! you are not a nerd.</h1>.`
+        }
     }
 
     function showSlide(n)
