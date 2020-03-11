@@ -3,6 +3,9 @@
     const quizContainer = document.getElementById("quiz");
     const resultContainer = document.getElementById("result");
     const submitButton = document.getElementById("submit");
+    const introContainer = document.getElementById("intro-container");
+
+    let quizStarted = "false";
 
     //Array of questions
     const Questions = [
@@ -38,8 +41,19 @@
         },
     ];
 
+    function intro(){
+        const output=[];
+        output.push(
+            `<h1>Welcome to the NERD QUIZ</h1>
+            <button id="start">Press Start</button>`
+        );
+
+        introContainer.innerHTML = output.join('');
+    }
+
     function buildQuiz(){
         //Store the HTML output
+        quizStarted = "true";
         const output=[];
 
         //For each questions
@@ -135,8 +149,21 @@
         showSlide(currentSlide - 1);
     }
 
-    //Initiate the quiz
+    function isQuizStarted(){
+        if (quizStarted !== "false")
+        {
+            const intro = document.getElementById("intro-container");
+            intro.style.zIndex = 0;
+            intro.style.display = "none";
+        }
+    }
+
+    intro();
+
     buildQuiz();
+
+    const startButton = document.querySelector("#start");
+    startButton.addEventListener("click", isQuizStarted);
 
     //Pagination
     const PrevButton = document.getElementById("previous");
