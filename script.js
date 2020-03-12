@@ -125,6 +125,10 @@
             resultContainer.innerHTML += `
                 <h1>Congratulation! you are not a nerd.</h1>.`
         }
+        
+        //Display the restart button
+        const restartButton = document.getElementById("restart");
+        restartButton.style.display = "inline-block";
     }
 
     function showSlide(n)
@@ -170,6 +174,10 @@
         }
     }
 
+    function reset(){
+        location.reload();
+    }
+
     intro();
 
     buildQuiz();
@@ -180,6 +188,7 @@
     //Pagination
     const PrevButton = document.getElementById("previous");
     const NextButton = document.getElementById("next");
+    const resetButton = document.getElementById("restart");
     const slides = document.querySelectorAll(".slide");
     let currentSlide = 0;
 
@@ -189,4 +198,5 @@
     submitButton.addEventListener("click", showResult);
     PrevButton.addEventListener("click", showPreviousSlide);
     NextButton.addEventListener("click", showNextSlide);
+    resetButton.addEventListener("click", reset);
 })();

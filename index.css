@@ -60,7 +60,11 @@ body{
   display: block;
 }
 
-#submit, #previous, #next{
+#restart{
+  display:none;
+}
+
+#submit, #previous, #next, #restart{
 	font-family: sans-serif;
 	font-size: 20px;
 	background-color: #279;
@@ -72,7 +76,7 @@ body{
   margin-bottom: 20px;
 }
 
-#submit:hover, #previous:hover, #next:hover{
+#submit:hover, #previous:hover, #next:hover, #restart:hover{
 	background-color: #38a;
 }
 
