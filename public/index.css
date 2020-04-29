@@ -20,7 +20,6 @@ body{
 
 #intro-container h1{
   color: #d54d7b; 
-  font-family: "Great Vibes", cursive; 
   font-size: 165px; line-height: 160px; 
   font-weight: normal; 
   margin-bottom: 0px; 
@@ -82,7 +81,6 @@ body{
 
 #result h1{
   color: #CEF0D4; 
-  font-family: 'Rouge Script', cursive; 
   font-size: 100px; 
   font-weight: normal; 
   line-height: 120px; 
