@@ -5,9 +5,10 @@
     const submitButton = document.getElementById("submit");
     const introContainer = document.getElementById("intro-container");
 
+    //Checking whether the quiz has started or not
     let quizStarted = "false";
 
-    //Array of questions
+    //Array of questions, each index is an object that contain the question, the list of answer choices and the correct answer
     const Questions = [
         {
             question:"When was internet invented?",
@@ -41,7 +42,9 @@
         },
     ];
 
+    //Populate the intro page
     function intro(){
+        //create elements with template literal
         const output=[];
         output.push(
             `<h1>Welcome to the NERD QUIZ</h1>
@@ -51,7 +54,9 @@
         introContainer.innerHTML = output.join('');
     }
 
+    //Build individual quiz slide
     function buildQuiz(){
+        //Quiz has started
         //Store the HTML output
         quizStarted = "true";
         const output=[];
@@ -65,7 +70,7 @@
             //For each answer
             for (letter in currentQuestion.answers)
             {
-                //Add an html button
+                //Add an html button using template literal
                 answers.push(
                     `<label>
                         <input type="radio" name="question${questionNumber}" value="${letter}">
@@ -75,6 +80,7 @@
                     </label>`
                 ); 
             }
+            //Push the question and corresponding answers to the out put
             output.push(
                 `<div class="slide">
                     <div class="question"> ${currentQuestion.question} </div>
@@ -86,6 +92,8 @@
         // finally combine our output list into one string of HTML and put it on the page
         quizContainer.innerHTML = output.join('');
     }
+
+    //Returning the result
     function showResult(){
         // gather answer containers from our quiz
         const answerContainers = quizContainer.querySelectorAll('.answers');
@@ -114,14 +122,17 @@
             }
           });
         
+        //Inform the player of the result
         resultContainer.innerHTML= `You got ${numCorrect} out of ${Questions.length}`;
         if(numCorrect === 3)
         {
+            //if the player answers all the questions correctly
             resultContainer.innerHTML += `
                 <h1>Congratulation! you are a nerd.</h1>.`
         }
         else
         {
+            //if the player doesn't get all the question
             resultContainer.innerHTML += `
                 <h1>Congratulation! you are not a nerd.</h1>.`
         }
@@ -131,24 +142,36 @@
         restartButton.style.display = "inline-block";
     }
 
+    //Display the quiz slide
     function showSlide(n)
     {
+        //Remove the previous slide
         slides[currentSlide].classList.remove("active-slide");
+
+        //Display the current slide
         slides[n].classList.add("active-slide");
         currentSlide=n;
+
+        //If this is the first slide
         if(currentSlide === 0)
         {
+            //Hide the previous button
             PrevButton.style.display="none";
         }
+
         else
         {
             PrevButton.style.display="inline-block";
         }
+        
+        //If this is the last slide
         if(currentSlide === slides.length-1)
         {
+            //Hide the next button
             NextButton.style.display = "none";
             submitButton.style.display = "inline-block";
         }
+
         else
         {
             NextButton.style.display = "inline-block";
@@ -156,15 +179,17 @@
         }
     }
 
+    //Show the next slide
     function showNextSlide() {
         showSlide(currentSlide + 1);
     }
       
+    //Show the previous slide
     function showPreviousSlide() {
         showSlide(currentSlide - 1);
     }
 
-    //Hide the intro page
+    //Hide the intro page if the quiz has started
     function isQuizStarted(){
         if (quizStarted !== "false")
         {
@@ -178,10 +203,12 @@
         location.reload();
     }
 
+    //Beginning of the quiz
     intro();
 
     buildQuiz();
 
+    //Add listener to start button
     const startButton = document.querySelector("#start");
     startButton.addEventListener("click", isQuizStarted);
 
@@ -192,6 +219,7 @@
     const slides = document.querySelectorAll(".slide");
     let currentSlide = 0;
 
+    //Show the current slide
     showSlide(currentSlide);
 
     //on submit, display result
