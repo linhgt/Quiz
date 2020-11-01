@@ -28,7 +28,3 @@ HTML, CSS, Javascript
 ## Future development:
 
 The purpose of this project is to practice HTML, CSS and Javascript, there is no other frameworks being used. So some ideas for further development include improving styling, more questions or potentially more functionality.
-
-## License
-
-None
